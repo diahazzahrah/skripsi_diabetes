@@ -1,0 +1,119 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="shortcut icon" href="../static/logo-app.png">
+        <title> 4611419056 | Dataset</title>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+        <link href="static/css/animated.css" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@600&display=swap" rel="stylesheet"> 
+        <meta charset="UTF-8">
+        <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+        <script src="{{url_for('static', filename='papaparse.min.js')
+        }}"></script>
+        
+    </head>
+   
+    <body> 
+
+        {% include 'navbar.html'%}
+        <br><br>
+        <br><br>
+        <br>
+        <div class="container p-1 text-center justify-content-center" style="color: #1F2A9D;">
+            <h1 class="fadeInUp animated" style="font-size: 30px;"><b>Dataset</b></h1>
+            <br>
+            <p style="font-size:18px">
+                Data yang digunakan merupakan data sekunder. Pengambilan data tersebut berasal dari website Kaggle
+                yaitu Pima Indians Diabetes Database. Dataset ini terdiri dari 8 atribut dan 1 target class.
+                8 atribut tersebut di antaranya Pregnancies, Glucose, BloodPressure, SkinThickness, 
+                Insulin, BMI, DiabetesPedigreeFunction, dan Age. Jumlah keseluruhan data dari dataset adalah 768. 
+            </p>
+        </div>
+
+        <div class="container pt-3 mb-2" >
+            <div class="navbar navbar-expand-lg container row justify-content-between p-3">
+                <div class="col-6 d-flex align-items-center">
+                </div>
+            </div>
+        </div>
+        <br>
+        <div class="container" style="padding: 5px;">
+            <h4>File Dataset</h4>
+            <ul class="nav nav-tabs" style="padding:5px; font-size:15px">
+                <li class="nav-item">
+                    <a class="nav-link" data-toggle="tab" href="/dataset_input">Data Asli</a>
+                </li>
+                <li class="nav-item"> 
+                    <a class="nav-link active" data-toggle="tab" href="/data_cleans"><b>Data Cleaning</b></a>
+                </li>
+                <li class="nav-item"> 
+                    <a class="nav-link" data-toggle="tab" href="/dataset_preprocessing">Data Preprocessing</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" data-toggle="tab" href="/dataset_feature">4 Features<a>
+                </li>
+            </ul>
+            <br>
+        </div>
+        <br>
+        <br>
+                        <div class="container" style="padding: 5px;">
+                            <h4  class="text-center justify-content-center">The results of the data cleaning process</h4>   
+                            <br>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="tile">
+                                        <div class="tile-body">
+                                             <div class="table-responsive">
+                                                <table class="table table-hover tablebordered" id="sampleTable">
+                                                    <thead>
+                                                        <tr>
+                                                            <th>No</th>
+                                                            <th>Pregnancies</th>
+                                                            <th>Glucose</th>
+                                                            <th>BloodPressure</th>
+                                                            <th>SkinThickness</th>
+                                                            <th>Insulin</th>
+                                                            <th>BMI</th>
+                                                            <th>DiabetesPedigreeFunction</th>
+                                                            <th>Age</th>
+                                                            <th>Outcome</th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                        <!--call data-->
+                                                        {% for i in range(50): %}
+                                                        <tr>
+                                                            <td>{{ i+1 }}</td>
+                                                            <td>{{ Pregnancies[i] }}</td>
+                                                            <td>{{ Glucose[i] }}</td>
+                                                            <td>{{ BloodPressure[i] }}</td>
+                                                            <td>{{ SkinThickness[i] }}</td>
+                                                            <td>{{ Insulin[i] }}</td>
+                                                            <td>{{ BMI[i] }}</td>
+                                                            <td>{{ DiabetesPedigreeFunction[i] }}</td>
+                                                            <td>{{ Age[i] }}</td>
+                                                            <td>{{ Outcome[i] }}</td>
+                                                        </tr>
+                                                    {% endfor %}
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                            <!-- end data asli -->
+                                        </div>
+                                    </div>
+                                           
+                                </div>
+                            </div>
+                                
+                        </div>
+                </div>
+            </div>
+        </div>
+     
+
+    {% include 'footer.html'%}
+    </body>
+</html>
